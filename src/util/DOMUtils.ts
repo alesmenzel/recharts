@@ -148,7 +148,7 @@ export const getOffset = (el: HTMLElement): ContainerOffset => {
  * @param  {Object} props Chart props
  * @return {Object}        {chartX, chartY}
  */
-export const calculateChartCoordinate = (event: MouseEvent, offset: ContainerOffset, container, props) => {
+export const calculateChartCoordinate = (event: MouseEvent, offset: ContainerOffset, container: any, props: any) => {
   const { width, height } = container.getBoundingClientRect();
   return {
     chartX: Math.round(((event.pageX - offset.left) / width) * props.width),
