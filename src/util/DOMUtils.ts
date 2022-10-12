@@ -144,9 +144,14 @@ export const getOffset = (el: HTMLElement): ContainerOffset => {
  * Calculate coordinate of cursor in chart
  * @param  {Object} event  Event object
  * @param  {Object} offset The offset of main part in the svg element
+ * @param  {any} container Chart wrapper container
+ * @param  {Object} props Chart props
  * @return {Object}        {chartX, chartY}
  */
-export const calculateChartCoordinate = (event: MouseEvent, offset: ContainerOffset) => ({
-  chartX: Math.round(event.pageX - offset.left),
-  chartY: Math.round(event.pageY - offset.top),
-});
+export const calculateChartCoordinate = (event: MouseEvent, offset: ContainerOffset, container, props) => {
+  const { width, height } = container.getBoundingClientRect()
+  return {
+    chartX: Math.round((event.pageX - offset.left) / width * props.width),
+    chartY: Math.round((event.pageY - offset.top) / height * props.height),
+  }
+};

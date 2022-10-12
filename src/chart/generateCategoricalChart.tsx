@@ -1120,7 +1120,7 @@ export const generateCategoricalChart = ({
       }
 
       const containerOffset = getOffset(this.container);
-      const e = calculateChartCoordinate(event, containerOffset);
+      const e = calculateChartCoordinate(event, containerOffset, this.container, this.props);
       const rangeObj = this.inRange(e.chartX, e.chartY);
       if (!rangeObj) {
         return null;
